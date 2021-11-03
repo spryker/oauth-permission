@@ -83,7 +83,7 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
     }
 
     /**
-     * @param string $authorizationToken
+     * @param string|null $authorizationToken
      *
      * @return string|null
      */
