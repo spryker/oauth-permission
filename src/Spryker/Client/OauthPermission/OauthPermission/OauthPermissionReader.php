@@ -47,11 +47,11 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
         $request = Request::createFromGlobals();
         $authorizationToken = $request->headers->get(OauthPermissionConfig::HEADER_AUTHORIZATION);
 
-        if (!$authorizationToken) {
+        $accessToken = $this->extractToken($authorizationToken);
+
+        if (!$accessToken) {
             return new PermissionCollectionTransfer();
         }
-
-        [$type, $accessToken] = $this->extractToken($authorizationToken);
 
         $oauthAccessTokenDataTransfer = $this->oauthService->extractAccessTokenData($accessToken);
 
@@ -85,10 +85,16 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
     /**
      * @param string $authorizationToken
      *
-     * @return array
+     * @return string
      */
-    protected function extractToken(string $authorizationToken): array
+    protected function extractToken(string $authorizationToken): ?string
     {
-        return preg_split('/\s+/', $authorizationToken);
+        $split = preg_split('/\s+/', $authorizationToken);
+
+        if (empty($split[1])) {
+            return null;
+        }
+
+        return $split[1];
     }
 }
