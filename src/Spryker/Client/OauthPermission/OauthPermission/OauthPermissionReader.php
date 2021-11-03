@@ -85,10 +85,14 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
     /**
      * @param string $authorizationToken
      *
-     * @return string
+     * @return string|null
      */
-    protected function extractToken(string $authorizationToken): ?string
+    protected function extractToken(?string $authorizationToken): ?string
     {
+        if (empty($authorizationToken)) {
+            return null;
+        }
+
         $split = preg_split('/\s+/', $authorizationToken);
 
         if (empty($split[1])) {
