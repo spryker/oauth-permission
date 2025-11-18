@@ -16,6 +16,8 @@ use Spryker\Zed\OauthPermission\Business\Expander\CustomerIdentifierExpander;
 use Spryker\Zed\OauthPermission\Business\Expander\CustomerIdentifierExpanderInterface;
 use Spryker\Zed\OauthPermission\Business\Filter\OauthUserIdentifierFilter;
 use Spryker\Zed\OauthPermission\Business\Filter\OauthUserIdentifierFilterInterface;
+use Spryker\Zed\OauthPermission\Business\Storage\CompanyRolePermissionStorage;
+use Spryker\Zed\OauthPermission\Business\Storage\CompanyRolePermissionStorageInterface;
 use Spryker\Zed\OauthPermission\Business\Storage\CompanyUserPermissionsStorage;
 use Spryker\Zed\OauthPermission\Business\Storage\CompanyUserPermissionsStorageInterface;
 use Spryker\Zed\OauthPermission\Business\Storage\CustomerIdentifierPermissionsStorage;
@@ -95,6 +97,19 @@ class OauthPermissionBusinessFactory extends AbstractBusinessFactory
     public function createPermissionStorageKeyBuilder(): OauthPermissionKeyBuilderInterface
     {
         return new OauthPermissionKeyBuilder();
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthPermission\Business\Storage\CompanyRolePermissionStorageInterface
+     */
+    public function createCompanyRolePermissionStorage(): CompanyRolePermissionStorageInterface
+    {
+        return new CompanyRolePermissionStorage(
+            $this->getStorageRedisClient(),
+            $this->createPermissionStorageKeyBuilder(),
+            $this->getPermissionFacade(),
+            $this->getUtilEncodingService(),
+        );
     }
 
     /**

@@ -29,10 +29,22 @@
         <property name="uuid" type="string"/>
     </transfer>
 
+    <transfer name="CompanyUserResponse">
+        <property name="companyUser" type="CompanyUser"/>
+    </transfer>
+
     <transfer name="Customer">
     </transfer>
 
     <transfer name="OauthPermissionStorageKey" strict="true">
         <property name="idCompanyUser" type="string"/>
+    </transfer>
+
+    <transfer name="CompanyRole">
+        <property name="companyUserCollection" type="CompanyUserCollection"/>
+    </transfer>
+
+    <transfer name="CompanyUserCollection">
+        <property name="companyUsers" type="CompanyUser[]" singular="companyUser"/>
     </transfer>
 </transfers>

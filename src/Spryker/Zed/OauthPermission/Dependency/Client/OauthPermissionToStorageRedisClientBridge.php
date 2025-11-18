@@ -33,4 +33,14 @@ class OauthPermissionToStorageRedisClientBridge implements OauthPermissionToStor
     {
         return $this->storageRedisClient->set($key, $value, $ttl);
     }
+
+    /**
+     * @param array<string, mixed> $items
+     *
+     * @return void
+     */
+    public function setMulti(array $items): void
+    {
+        $this->storageRedisClient->setMulti($items);
+    }
 }

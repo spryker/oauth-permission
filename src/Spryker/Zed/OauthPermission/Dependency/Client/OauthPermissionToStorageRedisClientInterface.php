@@ -17,4 +17,11 @@ interface OauthPermissionToStorageRedisClientInterface
      * @return bool
      */
     public function set(string $key, string $value, ?int $ttl = null): bool;
+
+    /**
+     * @param array $items
+     *
+     * @return void
+     */
+    public function setMulti(array $items): void;
 }
