@@ -19,13 +19,6 @@ use Spryker\Zed\OauthPermission\OauthPermissionConfig;
 
 class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInterface
 {
-    /**
-     * @param \Spryker\Shared\OauthPermission\KeyBuilder\OauthPermissionKeyBuilderInterface $keyBuilder
-     * @param \Spryker\Zed\OauthPermission\Dependency\Client\OauthPermissionToStorageRedisClientInterface $storageRedisClient
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToPermissionFacadeInterface $permissionFacade
-     * @param \Spryker\Zed\OauthPermission\Dependency\Service\OauthPermissionToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Zed\OauthPermission\OauthPermissionConfig $permissionConfig
-     */
     public function __construct(
         protected OauthPermissionKeyBuilderInterface $keyBuilder,
         protected OauthPermissionToStorageRedisClientInterface $storageRedisClient,
@@ -35,12 +28,6 @@ class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInte
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserIdentifierTransfer $companyUserIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserIdentifierTransfer
-     */
     public function storePermissions(
         CompanyUserIdentifierTransfer $companyUserIdentifierTransfer,
         CompanyUserTransfer $companyUserTransfer
@@ -60,11 +47,6 @@ class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInte
         return $companyUserIdentifierTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserIdentifierTransfer $companyUserIdentifierTransfer
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer|null
-     */
     protected function findPermissions(CompanyUserIdentifierTransfer $companyUserIdentifierTransfer): ?PermissionCollectionTransfer
     {
         if (!$companyUserIdentifierTransfer->getIdCompanyUser()) {
@@ -76,11 +58,6 @@ class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInte
             ->getPermissionsByIdentifier((string)$companyUserIdentifierTransfer->getIdCompanyUser());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserIdentifierTransfer $companyUserIdentifierTransfer
-     *
-     * @return string
-     */
     protected function generateKey(CompanyUserIdentifierTransfer $companyUserIdentifierTransfer): string
     {
         $oauthPermissionStorageKeyTransfer = (new OauthPermissionStorageKeyTransfer())

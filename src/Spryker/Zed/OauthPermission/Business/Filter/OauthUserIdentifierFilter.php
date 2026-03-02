@@ -16,19 +16,11 @@ class OauthUserIdentifierFilter implements OauthUserIdentifierFilterInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Zed\OauthPermission\OauthPermissionConfig $config
-     */
     public function __construct(OauthPermissionConfig $config)
     {
         $this->config = $config;
     }
 
-    /**
-     * @param array $userIdentifier
-     *
-     * @return array
-     */
     public function filter(array $userIdentifier): array
     {
         return array_filter($userIdentifier, function ($key) {

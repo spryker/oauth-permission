@@ -45,9 +45,6 @@ class OauthPermissionFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandCustomerIdentifierWillExpandCustomerDataWithCorrectPermissionsData(): void
     {
         //Assign
@@ -71,9 +68,6 @@ class OauthPermissionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFilterOauthUserIdentifierWillFilterOutConfiguredKeys(): void
     {
         //Assign
@@ -121,9 +115,6 @@ class OauthPermissionFacadeTest extends Unit
         return $permissionStoragePluginStub;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     protected function createPermissionCollectionTransfer(): PermissionCollectionTransfer
     {
         $permissionTransfer = (new PermissionTransfer())->setKey(static::PERMISSION_PLUGIN_KEY);
@@ -131,9 +122,6 @@ class OauthPermissionFacadeTest extends Unit
         return (new PermissionCollectionTransfer())->addPermission($permissionTransfer);
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Business\OauthPermissionFacadeInterface
-     */
     protected function getOauthPermissionFacade(): OauthPermissionFacadeInterface
     {
         return $this->tester->getFacade();
@@ -153,9 +141,6 @@ class OauthPermissionFacadeTest extends Unit
         return $mock;
     }
 
-    /**
-     * @return array
-     */
     protected function getUserIdentifierArray(): array
     {
         return [
@@ -168,9 +153,6 @@ class OauthPermissionFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getUserIdentifierFilteredArray(): array
     {
         return [
@@ -180,9 +162,6 @@ class OauthPermissionFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getOauthUserIdentifierFilterKeysMock(): array
     {
         return [

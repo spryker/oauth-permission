@@ -34,11 +34,6 @@ class OauthPermissionBusinessTester extends Actor
 {
     use _generated\OauthPermissionBusinessTesterActions;
 
-    /**
-     * @param \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface $permissionPlugin
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function haveCompanyUserWithPermissions(PermissionPluginInterface $permissionPlugin): CompanyUserTransfer
     {
         $permissionTransfer = $this->havePermission($permissionPlugin);

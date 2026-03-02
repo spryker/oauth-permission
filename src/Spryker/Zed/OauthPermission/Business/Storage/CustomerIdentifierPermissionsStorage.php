@@ -21,14 +21,6 @@ use Spryker\Zed\OauthPermission\OauthPermissionConfig;
 
 class CustomerIdentifierPermissionsStorage implements CustomerIdentifierPermissionsStorageInterface
 {
-    /**
-     * @param \Spryker\Shared\OauthPermission\KeyBuilder\OauthPermissionKeyBuilderInterface $keyBuilder
-     * @param \Spryker\Zed\OauthPermission\Dependency\Client\OauthPermissionToStorageRedisClientInterface $storageRedisClient
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToCompanyUserFacadeInterface $companyUserFacade
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToPermissionFacadeInterface $permissionFacade
-     * @param \Spryker\Zed\OauthPermission\Dependency\Service\OauthPermissionToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Zed\OauthPermission\OauthPermissionConfig $permissionConfig
-     */
     public function __construct(
         protected OauthPermissionKeyBuilderInterface $keyBuilder,
         protected OauthPermissionToStorageRedisClientInterface $storageRedisClient,
@@ -39,12 +31,6 @@ class CustomerIdentifierPermissionsStorage implements CustomerIdentifierPermissi
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerIdentifierTransfer
-     */
     public function storePermissions(
         CustomerIdentifierTransfer $customerIdentifierTransfer,
         CustomerTransfer $customerTransfer
@@ -65,11 +51,6 @@ class CustomerIdentifierPermissionsStorage implements CustomerIdentifierPermissi
         return $customerIdentifierTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     *
-     * @return string
-     */
     protected function generateKey(CustomerIdentifierTransfer $customerIdentifierTransfer): string
     {
         $oauthPermissionStorageKeyTransfer = (new OauthPermissionStorageKeyTransfer())
@@ -78,11 +59,6 @@ class CustomerIdentifierPermissionsStorage implements CustomerIdentifierPermissi
         return $this->keyBuilder->generateKey($oauthPermissionStorageKeyTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer|null
-     */
     protected function findPermissions(CustomerIdentifierTransfer $customerIdentifierTransfer): ?PermissionCollectionTransfer
     {
         if (!$customerIdentifierTransfer->getIdCompanyUser()) {

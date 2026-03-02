@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\OauthPermissionStorageKeyTransfer;
 
 interface OauthPermissionKeyBuilderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\OauthPermissionStorageKeyTransfer $oauthPermissionStorageKeyTransfer
-     *
-     * @return string
-     */
     public function generateKey(OauthPermissionStorageKeyTransfer $oauthPermissionStorageKeyTransfer): string;
 }

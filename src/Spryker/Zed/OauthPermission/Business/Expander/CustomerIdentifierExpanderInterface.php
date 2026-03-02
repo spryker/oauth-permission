@@ -15,12 +15,6 @@ use Generated\Shared\Transfer\CustomerTransfer;
  */
 interface CustomerIdentifierExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerIdentifierTransfer
-     */
     public function expandCustomerIdentifierWithPermissions(
         CustomerIdentifierTransfer $customerIdentifierTransfer,
         CustomerTransfer $customerTransfer

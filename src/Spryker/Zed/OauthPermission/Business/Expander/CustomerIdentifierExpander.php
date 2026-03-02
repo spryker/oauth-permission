@@ -28,10 +28,6 @@ class CustomerIdentifierExpander implements CustomerIdentifierExpanderInterface
      */
     protected $companyUserFacade;
 
-    /**
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToPermissionFacadeInterface $permissionFacade
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToCompanyUserFacadeInterface $companyUserFacade
-     */
     public function __construct(
         OauthPermissionToPermissionFacadeInterface $permissionFacade,
         OauthPermissionToCompanyUserFacadeInterface $companyUserFacade
@@ -40,12 +36,6 @@ class CustomerIdentifierExpander implements CustomerIdentifierExpanderInterface
         $this->companyUserFacade = $companyUserFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerIdentifierTransfer
-     */
     public function expandCustomerIdentifierWithPermissions(
         CustomerIdentifierTransfer $customerIdentifierTransfer,
         CustomerTransfer $customerTransfer

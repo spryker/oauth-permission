@@ -30,10 +30,6 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToOauthServiceInterface $oauthService
-     * @param \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         OauthPermissionToOauthServiceInterface $oauthService,
         OauthPermissionToUtilEncodingServiceInterface $utilEncodingService
@@ -42,9 +38,6 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function getPermissionsFromOauthToken(): PermissionCollectionTransfer
     {
         $request = Request::createFromGlobals();
@@ -71,11 +64,6 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
         return $customerPermissions;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OauthAccessTokenDataTransfer $oauthAccessTokenDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer|null
-     */
     protected function extractPermissionsFromOauthToken(OauthAccessTokenDataTransfer $oauthAccessTokenDataTransfer): ?PermissionCollectionTransfer
     {
         $oauthUserIdDecoded = $this->utilEncodingService->decodeJson($oauthAccessTokenDataTransfer->getOauthUserId(), true);
@@ -89,11 +77,6 @@ class OauthPermissionReader implements OauthPermissionReaderInterface
         return $customerIdentifier->getPermissions();
     }
 
-    /**
-     * @param string $authorizationToken
-     *
-     * @return string|null
-     */
     protected function extractToken(string $authorizationToken): ?string
     {
         $explodedToken = explode(' ', $authorizationToken);

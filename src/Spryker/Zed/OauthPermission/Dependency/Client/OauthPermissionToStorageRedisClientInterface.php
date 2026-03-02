@@ -9,19 +9,7 @@ namespace Spryker\Zed\OauthPermission\Dependency\Client;
 
 interface OauthPermissionToStorageRedisClientInterface
 {
-    /**
-     * @param string $key
-     * @param string $value
-     * @param int|null $ttl
-     *
-     * @return bool
-     */
     public function set(string $key, string $value, ?int $ttl = null): bool;
 
-    /**
-     * @param array $items
-     *
-     * @return void
-     */
     public function setMulti(array $items): void;
 }

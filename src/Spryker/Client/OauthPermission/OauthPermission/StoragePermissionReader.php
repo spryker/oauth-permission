@@ -20,12 +20,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class StoragePermissionReader implements PermissionReaderInterface
 {
-    /**
-     * @param \Spryker\Shared\OauthPermission\KeyBuilder\OauthPermissionKeyBuilderInterface $permissionKeyBuilder
-     * @param \Spryker\Client\OauthPermission\Dependency\Client\OauthPermissionToStorageRedisClientInterface $storageRedisClient
-     * @param \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToOauthServiceInterface $oauthService
-     * @param \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         protected OauthPermissionKeyBuilderInterface $permissionKeyBuilder,
         protected OauthPermissionToStorageRedisClientInterface $storageRedisClient,
@@ -34,9 +28,6 @@ class StoragePermissionReader implements PermissionReaderInterface
     ) {
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function getPermissions(): PermissionCollectionTransfer
     {
         $request = Request::createFromGlobals();
@@ -72,11 +63,6 @@ class StoragePermissionReader implements PermissionReaderInterface
         );
     }
 
-    /**
-     * @param string $authorizationHeader
-     *
-     * @return string|null
-     */
     protected function extractToken(string $authorizationHeader): ?string
     {
         if (preg_match('/^Bearer\s+(.+)$/i', $authorizationHeader, $matches)) {
@@ -86,11 +72,6 @@ class StoragePermissionReader implements PermissionReaderInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OauthAccessTokenDataTransfer $oauthAccessTokenDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerIdentifierTransfer|null
-     */
     protected function extractCustomerIdentifier(OauthAccessTokenDataTransfer $oauthAccessTokenDataTransfer): ?CustomerIdentifierTransfer
     {
         $oauthUserIdDecoded = $this->utilEncodingService->decodeJson($oauthAccessTokenDataTransfer->getOauthUserId(), true);
@@ -102,11 +83,6 @@ class StoragePermissionReader implements PermissionReaderInterface
             ->fromArray($oauthUserIdDecoded, true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     *
-     * @return string|null
-     */
     protected function generateKey(CustomerIdentifierTransfer $customerIdentifierTransfer): ?string
     {
         if (!$customerIdentifierTransfer->getIdCompanyUser()) {

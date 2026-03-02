@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PermissionCollectionTransfer;
 
 interface OauthPermissionToPermissionFacadeInterface
 {
-    /**
-     * @param string $identifier
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function getPermissionsByIdentifier(string $identifier): PermissionCollectionTransfer;
 }

@@ -21,11 +21,6 @@ class OauthPermissionKeyBuilder implements OauthPermissionKeyBuilderInterface
      */
     protected const KEY_PATTERN = '%s_%s';
 
-    /**
-     * @param \Generated\Shared\Transfer\OauthPermissionStorageKeyTransfer $oauthPermissionStorageKeyTransfer
-     *
-     * @return string
-     */
     public function generateKey(OauthPermissionStorageKeyTransfer $oauthPermissionStorageKeyTransfer): string
     {
         $oauthPermissionStorageKeyTransfer->requireIdCompanyUser();

@@ -21,20 +21,11 @@ class CompanyUserIdentifierExpander implements CompanyUserIdentifierExpanderInte
      */
     protected $permissionFacade;
 
-    /**
-     * @param \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToPermissionFacadeInterface $permissionFacade
-     */
     public function __construct(OauthPermissionToPermissionFacadeInterface $permissionFacade)
     {
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserIdentifierTransfer $companyUserIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserIdentifierTransfer
-     */
     public function expandCompanyUserIdentifier(
         CompanyUserIdentifierTransfer $companyUserIdentifierTransfer,
         CompanyUserTransfer $companyUserTransfer

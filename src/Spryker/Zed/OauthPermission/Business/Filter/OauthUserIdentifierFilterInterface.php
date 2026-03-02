@@ -9,10 +9,5 @@ namespace Spryker\Zed\OauthPermission\Business\Filter;
 
 interface OauthUserIdentifierFilterInterface
 {
-    /**
-     * @param array $userIdentifier
-     *
-     * @return array
-     */
     public function filter(array $userIdentifier): array;
 }

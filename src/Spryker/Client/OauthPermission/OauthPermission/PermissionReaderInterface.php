@@ -11,8 +11,5 @@ use Generated\Shared\Transfer\PermissionCollectionTransfer;
 
 interface PermissionReaderInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function getPermissions(): PermissionCollectionTransfer;
 }

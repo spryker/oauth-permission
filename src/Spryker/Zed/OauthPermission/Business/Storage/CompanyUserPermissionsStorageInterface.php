@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 
 interface CompanyUserPermissionsStorageInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserIdentifierTransfer $companyUserIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserIdentifierTransfer
-     */
     public function storePermissions(
         CompanyUserIdentifierTransfer $companyUserIdentifierTransfer,
         CompanyUserTransfer $companyUserTransfer

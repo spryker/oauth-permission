@@ -33,9 +33,6 @@ class OauthPermissionFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\OauthPermission\OauthPermission\PermissionReaderInterface
-     */
     public function createPermissionReader(): PermissionReaderInterface
     {
         return new StoragePermissionReader(
@@ -46,33 +43,21 @@ class OauthPermissionFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\OauthPermission\KeyBuilder\OauthPermissionKeyBuilderInterface
-     */
     public function createKeyBuilder(): OauthPermissionKeyBuilderInterface
     {
         return new OauthPermissionKeyBuilder();
     }
 
-    /**
-     * @return \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToOauthServiceInterface
-     */
     public function getOauthService(): OauthPermissionToOauthServiceInterface
     {
         return $this->getProvidedDependency(OauthPermissionDependencyProvider::SERVICE_OAUTH);
     }
 
-    /**
-     * @return \Spryker\Client\OauthPermission\Dependency\Service\OauthPermissionToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): OauthPermissionToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(OauthPermissionDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Client\OauthPermission\Dependency\Client\OauthPermissionToStorageRedisClientInterface
-     */
     public function getStorageRedisClient(): OauthPermissionToStorageRedisClientInterface
     {
         return $this->getProvidedDependency(OauthPermissionDependencyProvider::CLIENT_STORAGE_REDIS);

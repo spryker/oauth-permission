@@ -22,13 +22,6 @@ class OauthPermissionToStorageRedisClientBridge implements OauthPermissionToStor
         $this->storageRedisClient = $storageRedisClient;
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     * @param int|null $ttl
-     *
-     * @return bool
-     */
     public function set(string $key, string $value, ?int $ttl = null): bool
     {
         return $this->storageRedisClient->set($key, $value, $ttl);

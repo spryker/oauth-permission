@@ -24,11 +24,6 @@ class OauthPermissionToPermissionFacadeBridge implements OauthPermissionToPermis
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @param string $identifier
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function getPermissionsByIdentifier(string $identifier): PermissionCollectionTransfer
     {
         return $this->permissionFacade->getPermissionsByIdentifier($identifier);

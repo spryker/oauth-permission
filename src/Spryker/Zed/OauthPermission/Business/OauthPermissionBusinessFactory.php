@@ -54,17 +54,11 @@ class OauthPermissionBusinessFactory extends AbstractBusinessFactory
         return new CompanyUserIdentifierExpander($this->getPermissionFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Business\Filter\OauthUserIdentifierFilterInterface
-     */
     public function createOauthUserIdentifierFilter(): OauthUserIdentifierFilterInterface
     {
         return new OauthUserIdentifierFilter($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Business\Storage\CustomerIdentifierPermissionsStorageInterface
-     */
     public function createCustomerIdentifierPermissionStorage(): CustomerIdentifierPermissionsStorageInterface
     {
         return new CustomerIdentifierPermissionsStorage(
@@ -77,9 +71,6 @@ class OauthPermissionBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Business\Storage\CompanyUserPermissionsStorageInterface
-     */
     public function createCompanyUserPermissionStorage(): CompanyUserPermissionsStorageInterface
     {
         return new CompanyUserPermissionsStorage(
@@ -91,17 +82,11 @@ class OauthPermissionBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\OauthPermission\KeyBuilder\OauthPermissionKeyBuilderInterface
-     */
     public function createPermissionStorageKeyBuilder(): OauthPermissionKeyBuilderInterface
     {
         return new OauthPermissionKeyBuilder();
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Business\Storage\CompanyRolePermissionStorageInterface
-     */
     public function createCompanyRolePermissionStorage(): CompanyRolePermissionStorageInterface
     {
         return new CompanyRolePermissionStorage(
@@ -112,17 +97,11 @@ class OauthPermissionBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToPermissionFacadeInterface
-     */
     public function getPermissionFacade(): OauthPermissionToPermissionFacadeInterface
     {
         return $this->getProvidedDependency(OauthPermissionDependencyProvider::FACADE_PERMISSION);
     }
 
-    /**
-     * @return \Spryker\Zed\OauthPermission\Dependency\Facade\OauthPermissionToCompanyUserFacadeInterface
-     */
     public function getCompanyUserFacade(): OauthPermissionToCompanyUserFacadeInterface
     {
         return $this->getProvidedDependency(OauthPermissionDependencyProvider::FACADE_COMPANY_USER);

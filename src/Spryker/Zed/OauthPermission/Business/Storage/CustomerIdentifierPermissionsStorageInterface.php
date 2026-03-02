@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\CustomerTransfer;
 
 interface CustomerIdentifierPermissionsStorageInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerIdentifierTransfer $customerIdentifierTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerIdentifierTransfer
-     */
     public function storePermissions(
         CustomerIdentifierTransfer $customerIdentifierTransfer,
         CustomerTransfer $customerTransfer
