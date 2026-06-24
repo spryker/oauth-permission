@@ -12,6 +12,8 @@ use Spryker\Client\Kernel\AbstractBundleConfig;
 class OauthPermissionConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface::HEADER_AUTHORIZATION
      *
      * @var string
