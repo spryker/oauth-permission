@@ -32,7 +32,7 @@ class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInte
         CompanyUserIdentifierTransfer $companyUserIdentifierTransfer,
         CompanyUserTransfer $companyUserTransfer
     ): CompanyUserIdentifierTransfer {
-        $permissionCollectionTransfer = $this->findPermissions($companyUserIdentifierTransfer);
+        $permissionCollectionTransfer = $this->findCompanyUserPermissions($companyUserIdentifierTransfer, $companyUserTransfer);
         if ($permissionCollectionTransfer === null) {
             return $companyUserIdentifierTransfer;
         }
@@ -47,15 +47,17 @@ class CompanyUserPermissionsStorage implements CompanyUserPermissionsStorageInte
         return $companyUserIdentifierTransfer;
     }
 
-    protected function findPermissions(CompanyUserIdentifierTransfer $companyUserIdentifierTransfer): ?PermissionCollectionTransfer
-    {
-        if (!$companyUserIdentifierTransfer->getIdCompanyUser()) {
+    protected function findCompanyUserPermissions(
+        CompanyUserIdentifierTransfer $companyUserIdentifierTransfer,
+        CompanyUserTransfer $companyUserTransfer
+    ): ?PermissionCollectionTransfer {
+        if (!$companyUserIdentifierTransfer->getIdCompanyUser() || !$companyUserTransfer->getIdCompanyUser()) {
             return null;
         }
 
         return $this
             ->permissionFacade
-            ->getPermissionsByIdentifier((string)$companyUserIdentifierTransfer->getIdCompanyUser());
+            ->getPermissionsByIdentifier((string)$companyUserTransfer->getIdCompanyUser());
     }
 
     protected function generateKey(CompanyUserIdentifierTransfer $companyUserIdentifierTransfer): string
